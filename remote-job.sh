@@ -103,7 +103,7 @@ until [ "$IS_BUILDING" = "false" ]; do
   LINE_COUNT=`expr $NEW_LINE_CURSOR - $OUTPUT_LINE_CURSOR`
   if [ "$LINE_COUNT" -gt 0 ];
   then
-    curl -XPOST -sSL --user $JENKINS_USER:$API_TOKEN $JOB_URL/consoleText | tail -$LINE_COUNT
+    curl -XPOST -sSL --user $JENKINS_USER:$API_TOKEN $CURL_OPTS $JOB_URL/consoleText | tail -$LINE_COUNT
   fi
   OUTPUT_LINE_CURSOR=$NEW_LINE_CURSOR
 done
